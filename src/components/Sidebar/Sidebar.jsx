@@ -43,7 +43,7 @@ const Sidebar = () => {
           <Dashboard sx={{ color: 'white' }} fontSize="small" />
         </ListItemIcon>
         <ListItemText
-          primary="Halaman Utama"
+          primary="Dhasboard"
           primaryTypographyProps={{
             fontSize: '0.9em',
             fontFamily: 'Poppins',
