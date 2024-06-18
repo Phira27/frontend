@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-3">
         <Tooltip title="About" placement="bottom">
-          <Link to="/about" fontFamily="Poppins" className="text-blue-500  text-lg hover:text-blue-700">
+        <Link to="/about" className="text-blue-500 text-lg hover:text-blue-700 font-poppins">
             About
           </Link>
         </Tooltip>
