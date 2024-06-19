@@ -32,6 +32,7 @@ function NavBar() {
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
           <img src={logo} className="img-fluid logo" alt="brand" />
+          <div className="brand-title">Pemantauan Kualitas Udara <br/>Kabupaten Luamajang</div> 
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
