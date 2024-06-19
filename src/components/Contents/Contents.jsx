@@ -43,7 +43,7 @@ const Contents = () => {
   }
 
   return (
-    <div>
+    <div className='mt-32'>
       <div className="grid grid-cols-3 gap-5">
         <TemperatureChart data={data[0].temperature} />
         <HumidityChart data={data[0].humidity} />

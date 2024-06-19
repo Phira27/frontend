@@ -1,25 +1,49 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from "react-router-dom";
+import "../style.css";
+import "../App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Contents, Navbar } from "../components";
+import ScrollToTop from "../components/ScrollToTop";
+import Preloader from "../components/Pre";
+import Footer from "../components/Footer/Footer";
 import About from "../pages/About";
-import History from "../pages/History";
-import HistorySenduro from "../pages/HistorySenduro";
 import HistoryDawuhan from "../pages/HistoryDawuhan";
 import HistoryJatiroto from "../pages/HistoryJatiroto";
 
-const App = () => {
+function App() {
+  const [load, upadateLoad] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      upadateLoad(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/history/senduro" element={<HistorySenduro />} />
-        <Route path="/history/dawuhan" element={<HistoryDawuhan />} />
-        <Route path="/history/jatiroto" element={<HistoryJatiroto />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <Preloader load={load}/>
+      <div className="App" id={load ? "no-scroll" : "scroll"}>
+        <Navbar/>
+        <ScrollToTop/>
+        <Routes>
+          <Route path="/" element={<Contents />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/history/dawuhan" element={<HistoryDawuhan />} />
+          <Route path="/history/jatiroto" element={<HistoryJatiroto />} />
+          <Route path="*" element={<Navigate to="/"/>} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;

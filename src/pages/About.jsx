@@ -1,55 +1,15 @@
 import React from "react";
-import { Logobar, Navbar, Sidebar } from "../components";
-import { Container, Typography, Box } from "@mui/material";
-import { keyframes } from "@emotion/react";
-import SchoolIcon from '@mui/icons-material/School';
-import PhoneIcon from '@mui/icons-material/Phone';
+import { Container } from "@mui/material";
 
 import webIcon from "../assets/web.png";
 import targetIcon from "../assets/target.png";
 import squareIcon from "../assets/square.png";
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`;
 
 const About = () => {
   return (
-    <div className="grid grid-cols-5 min-h-screen">
-      <div className="col-span-1 grid grid-rows-12 h-screen">
-        <div className="row-span-1">
-          <Logobar />
-        </div>
-        <div className="row-span-11">
-          <Sidebar />
-        </div>
-      </div>
-      <div className="col-span-4 grid grid-rows-12 h-screen">
-        <div className="row-span-1">
-          <Navbar />
-        </div>
-        <div className="row-span-11 p-4 overflow-y-auto">
+        <div className="row-span-11 p-4 overflow-y-auto mt-32">
           <Container>
-            <Box
-              sx={{
-                bgcolor: "#2D1B6B",
-                color: "white",
-                p: 4,
-                textAlign: "center",
-                animation: `${fadeIn} 2s ease-in-out`,
-                borderRadius: 2,
-                boxShadow: 3,
-                mb: 4,
-              }}
-            >
-              <Typography variant="h3" gutterBottom fontFamily="Poppins">
-                Pemantauan Kualitas Udara
-              </Typography>
-              <Typography variant="h4" paragraph fontFamily="Poppins">
-                Untuk Hunian Sehat dan Nyaman di Lumajang
-              </Typography>
-            </Box>
             <div
               style={{
                 display: "grid",
@@ -152,34 +112,8 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <Box
-              sx={{
-                bgcolor: "#2D1B6B",
-                color: "white",
-                p: 4,
-                textAlign: "center",
-                borderRadius: 2,
-                boxShadow: 3,
-                mt: 4,
-              }}
-            >
-              <Typography variant="h5" gutterBottom fontFamily="Poppins" sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <SchoolIcon sx={{ mr: 1 }} />
-                Program Studi D3 Teknologi Informasi - PSDKU Polinema Kabupaten Lumajang
-              </Typography>
-              <Typography variant="h6" fontFamily="Poppins" sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <PhoneIcon sx={{ mr: 1 }} />
-                085225865086
-              </Typography>
-              <Typography variant="h6" fontFamily="Poppins" sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <PhoneIcon sx={{ mr: 1 }} />
-                085225865086
-              </Typography>
-            </Box>
           </Container>
         </div>
-      </div>
-    </div>
   );
 };
 

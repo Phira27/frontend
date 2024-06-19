@@ -15,7 +15,6 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { Logobar, Navbar, Sidebar } from "../components";
 import { keyframes } from "@emotion/react";
 
 const fadeIn = keyframes`
@@ -49,20 +48,7 @@ const HistoryDawuhan = () => {
   ];
 
   return (
-    <div className="grid grid-cols-5">
-      <div className="col-span-1 grid grid-rows-12 h-screen">
-        <div className="row-span-1">
-          <Logobar />
-        </div>
-        <div className="row-span-11">
-          <Sidebar />
-        </div>
-      </div>
-      <div className="col-span-4 grid grid-rows-12 h-screen">
-        <div className="row-span-1">
-          <Navbar />
-        </div>
-        <div className="row-span-11 p-4 overflow-y-auto">
+          <div className="row-span-11 p-4 overflow-y-auto mt-32">
           <Container>
             <Box
               sx={{
@@ -177,8 +163,6 @@ const HistoryDawuhan = () => {
             </Box>
           </Container>
         </div>
-      </div>
-    </div>
   );
 };
 

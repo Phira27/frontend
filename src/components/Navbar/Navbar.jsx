@@ -1,26 +1,94 @@
-import React from "react";
-import { KeyboardDoubleArrowLeft } from "@mui/icons-material";
-import { Tooltip } from "@mui/material";
+import React, { useState } from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Container from "react-bootstrap/Container";
+import logo from "../../assets/logo.png";
+import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { AiOutlineHome, AiOutlineProject, AiOutlineUser } from "react-icons/ai";
 
-const Navbar = () => {
+function NavBar() {
+  const [expand, updateExpanded] = useState(false);
+  const [navColour, updateNavbar] = useState(false);
+
+  function scrollHandler() {
+    if (window.scrollY >= 20) {
+      updateNavbar(true);
+    } else {
+      updateNavbar(false);
+    }
+  }
+
+  window.addEventListener("scroll", scrollHandler);
+
   return (
-    <div className="shadow-md flex justify-between items-center h-16 bg-white px-4">
-      <div>
-        <Link to="/">
-          <KeyboardDoubleArrowLeft />
-        </Link>
-      </div>
-      <div className="flex items-center gap-3">
-        <Tooltip title="About" placement="bottom">
-        <Link to="/about" className="text-blue-500 text-lg hover:text-blue-700 font-poppins">
-            About
-          </Link>
-        </Tooltip>
-        {/* Tambahkan tombol lainnya di sini jika diperlukan */}
-      </div>
-    </div>
-  );
-};
+    <Navbar
+      expanded={expand}
+      fixed="top"
+      expand="md"
+      className={navColour ? "sticky" : "navbar"}
+    >
+      <Container>
+        <Navbar.Brand as={Link} to="/" className="d-flex">
+          <img src={logo} className="img-fluid logo" alt="brand" />
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          onClick={() => {
+            updateExpanded(expand ? false : "expanded");
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </Navbar.Toggle>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto" defaultActiveKey="#home">
+            <Nav.Item>
+              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+              </Nav.Link>
+            </Nav.Item>
 
-export default Navbar;
+            <NavDropdown
+              title={
+                <span>
+                  <AiOutlineProject style={{ marginBottom: "2px" }} /> History
+                </span>
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item
+                as={Link}
+                to="/history/dawuhan"
+                onClick={() => updateExpanded(true)}
+              >
+                Dawuhan
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                as={Link}
+                to="/history/jatiroto"
+                onClick={() => updateExpanded(true)}
+              >
+                Jatiroto
+              </NavDropdown.Item>
+            </NavDropdown>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/about"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default NavBar;
